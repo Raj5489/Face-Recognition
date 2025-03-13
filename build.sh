@@ -24,12 +24,18 @@ echo "Upgrading pip..."
 python -m pip install --upgrade pip
 
 echo "Installing Python dependencies..."
-pip install --no-cache-dir wheel setuptools cmake
+pip install --no-cache-dir wheel setuptools
 
-# Install dlib with specific flags
+# Install cmake separately with specific version
+pip install --no-cache-dir cmake==3.25.0
+
+# Prepare environment for dlib
 export CFLAGS="-O2"
 export CXXFLAGS="-O2"
-pip install --no-cache-dir dlib --verbose
+export PYTHON_VERSION=3.10.11
+
+# Install dlib with specific version
+pip install --no-cache-dir dlib==19.24.0 --verbose
 
 # Install the rest of the requirements
 pip install --no-cache-dir -r requirements.txt
