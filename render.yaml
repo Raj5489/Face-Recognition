@@ -9,6 +9,10 @@ services:
         value: 3.10.11
       - key: PYTHONUNBUFFERED
         value: "true"
+      - key: PYTHON_CONFIGURE_OPTS
+        value: "--enable-optimizations --with-lto"
+      - key: MAX_THREADS
+        value: "1"
     disk:
       name: data
       mountPath: /data
